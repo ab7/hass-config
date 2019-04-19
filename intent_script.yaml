@@ -1,0 +1,22 @@
+TurnOnOutsideLights:
+  speech:
+    text: Abracadabra
+  action:
+    service: switch.turn_on
+    entity_id: group.outside_lights
+TurnOffOutsideLights:
+  speech:
+    text: Abracadabra
+  action:
+    service: switch.turn_off
+    entity_id: group.outside_lights
+TurnOnTv:
+  speech:
+    text: Abracadabra
+  action:
+    service: media_player.turn_on
+TurnOffTv:
+  speech:
+    text: Abracadabra
+  action:
+    service: media_player.turn_off

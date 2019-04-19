@@ -1,0 +1,6 @@
+outside_lights:
+    name: outside lights
+    view: false
+    entities:
+      - switch.ge_14291_in_wall_smart_switch_switch
+      - switch.ge_14291_in_wall_smart_switch_switch_2
