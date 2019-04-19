@@ -20,3 +20,25 @@ TurnOffTv:
     text: Abracadabra
   action:
     service: media_player.turn_off
+TurnOnLivingRoomLights:
+  speech:
+    text: Abracadabra
+  action:
+    service: light.turn_on
+    entity_id: group.living_room_lights
+    data:
+      brightness: 255
+DimLivingRoomLights:
+  speech:
+    text: Abracadabra
+  action:
+    service: light.turn_on
+    entity_id: group.living_room_lights
+    data:
+      brightness: 50
+TurnOffLivingRoomLights:
+  speech:
+    text: Abracadabra
+  action:
+    service: light.turn_off
+    entity_id: group.living_room_lights
