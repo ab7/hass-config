@@ -9,4 +9,4 @@ living_room_lights:
     view: false
     entities:
       - light.ge_28167_zw3104_plug_in_smart_dimmer_single_plug_level
-      - light.ge_28167_zw3104_plug_in_smart_dimmer_single_plug_level_2
+      - light.ge_28167_zw3104_plug_in_smart_dimmer_single_plug_level_3
