@@ -1,0 +1,47 @@
+- id: '1553912216011'
+  alias: Outside Lights (AWAY)
+  trigger:
+  - entity_id: device_tracker.alex_phone
+    from: home
+    platform: state
+    to: not_home
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - alias: ''
+    data: {}
+    service: switch.turn_on
+- id: '1553924030288'
+  alias: Outside Lights (HOME)
+  trigger:
+  - entity_id: device_tracker.alex_phone
+    from: not_home
+    platform: state
+    to: home
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - service: switch.turn_off
+- id: '1553926941290'
+  alias: Outside Lights (SUNSET)
+  trigger:
+  - event: sunset
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: device_tracker.alex_phone
+    state: not_home
+  action:
+  - service: switch.turn_on
+- id: '1553927002363'
+  alias: Outside Lights (SUNRISE)
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - service: switch.turn_off
