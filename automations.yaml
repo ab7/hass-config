@@ -11,7 +11,8 @@
     state: below_horizon
   action:
   - alias: ''
-    data: {}
+    data:
+      entity_id: group.outside_lights
     service: switch.turn_on
 - id: '1553924030288'
   alias: Outside Lights (HOME)
@@ -25,7 +26,9 @@
     entity_id: sun.sun
     state: below_horizon
   action:
-  - service: switch.turn_off
+  - data:
+      entity_id: group.outside_lights
+    service: switch.turn_off
 - id: '1553926941290'
   alias: Outside Lights (SUNSET)
   trigger:
@@ -36,7 +39,9 @@
     entity_id: device_tracker.alex_phone
     state: not_home
   action:
-  - service: switch.turn_on
+  - data:
+      entity_id: group.outside_lights
+    service: switch.turn_on
 - id: '1553927002363'
   alias: Outside Lights (SUNRISE)
   trigger:
@@ -44,4 +49,6 @@
     platform: sun
   condition: []
   action:
-  - service: switch.turn_off
+  - data:
+      entity_id: group.outside_lights
+    service: switch.turn_off
