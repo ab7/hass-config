@@ -48,19 +48,24 @@ zwave:
 
 wake_on_lan:
 
-media_player:
-  - platform: webostv
-    name: LG webOS TV
-    host: !secret lg_ip
-    filename: webostv.conf
-    turn_on_action:
-      service: wake_on_lan.send_magic_packet
-      data:
-        mac: !secret lg_mac
-    customize:
-      sources:
-        - youtube
-        - netflix
-        - hdmi1
-
 alexa:
+
+emulated_hue:
+  host_ip: !secret hue_ip
+  listen_port: !secret hue_port
+  expose_by_default: false
+  exposed_domains:
+    - light
+  entities:
+    light.ge_28167_zw3104_plug_in_smart_dimmer_single_plug_level:
+      name: "Living Room Dimmer 1"
+      hidden: false
+    light.ge_28167_zw3104_plug_in_smart_dimmer_single_plug_level_3:
+      name: "Living Room Dimmer 2"
+      hidden: false
+    light.jasco_products_14294_in_wall_smart_dimmer_level:
+      name: "Kitchen Light 1"
+      hidden: false
+    light.jasco_products_14294_in_wall_smart_dimmer_level_2:
+      name: "Kitchen Light 2"
+      hidden: false
