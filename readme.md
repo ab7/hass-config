@@ -7,3 +7,8 @@ This repo represents the [Home Assistant](https://www.home-assistant.io/) (HASS)
 ### Lights
 
 ![Home light automation diagram](diagrams/lights-automation.png)
+
+## Add-ons
+
+* [Configurator](https://github.com/home-assistant/hassio-addons/tree/master/configurator)
+* [DuckDNS](https://github.com/home-assistant/hassio-addons/tree/master/duckdns)
