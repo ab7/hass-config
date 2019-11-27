@@ -50,6 +50,15 @@
   - condition: state
     entity_id: sun.sun
     state: below_horizon
+  - condition: state
+    entity_id: device_tracker.alexs_phone
+    state: home
+  - condition: state
+    entity_id: device_tracker.alexs_iphone_ios
+    state: home
+  - condition: state
+    entity_id: device_tracker.alexs_phone_owntracks
+    state: home
   action:
   - data:
       entity_id: group.outside_lights
