@@ -1,14 +1,6 @@
 - id: '1553912216011'
   alias: Outside Lights (AWAY)
   trigger:
-  - entity_id: device_tracker.alexs_iphone
-    from: home
-    platform: state
-    to: not_home
-  - entity_id: device_tracker.alexs_iphone_ios
-    from: home
-    platform: state
-    to: not_home
   - entity_id: device_tracker.alexs_phone_owntracks
     from: home
     platform: state
@@ -17,15 +9,6 @@
   - condition: state
     entity_id: sun.sun
     state: below_horizon
-  - condition: state
-    entity_id: device_tracker.alexs_phone
-    state: not_home
-  - condition: state
-    entity_id: device_tracker.alexs_iphone_ios
-    state: not_home
-  - condition: state
-    entity_id: device_tracker.alexs_phone_owntracks
-    state: not_home
   action:
   - alias: ''
     data:
@@ -34,14 +17,6 @@
 - id: '1553924030288'
   alias: Outside Lights (HOME)
   trigger:
-  - entity_id: device_tracker.alexs_iphone
-    from: not_home
-    platform: state
-    to: home
-  - entity_id: device_tracker.alexs_iphone_ios
-    from: not_home
-    platform: state
-    to: home
   - entity_id: device_tracker.alexs_phone_owntracks
     from: not_home
     platform: state
@@ -50,15 +25,6 @@
   - condition: state
     entity_id: sun.sun
     state: below_horizon
-  - condition: state
-    entity_id: device_tracker.alexs_phone
-    state: home
-  - condition: state
-    entity_id: device_tracker.alexs_iphone_ios
-    state: home
-  - condition: state
-    entity_id: device_tracker.alexs_phone_owntracks
-    state: home
   action:
   - data:
       entity_id: group.outside_lights
@@ -75,12 +41,6 @@
   - event: sunset
     platform: sun
   condition:
-  - condition: state
-    entity_id: device_tracker.alexs_phone
-    state: not_home
-  - condition: state
-    entity_id: device_tracker.alexs_iphone_ios
-    state: not_home
   - condition: state
     entity_id: device_tracker.alexs_phone_owntracks
     state: not_home
@@ -105,17 +65,9 @@
   - event: sunset
     platform: sun
   condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: device_tracker.alexs_phone
-        state: home
-      - condition: state
-        entity_id: device_tracker.alexs_iphone_ios
-        state: home
-      - condition: state
-        entity_id: device_tracker.alexs_phone_owntracks
-        state: home
+  - condition: state
+    entity_id: device_tracker.alexs_phone_owntracks
+    state: home
   action:
   - data:
       entity_id: group.kitchen_lights
