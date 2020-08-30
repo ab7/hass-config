@@ -51,11 +51,7 @@ map:
 zwave:
     usb_path: /dev/ttyACM0
 
-wake_on_lan:
-
 alexa:
-
-homekit:
 
 zeroconf:
 
