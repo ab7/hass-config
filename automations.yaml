@@ -1,77 +1,69 @@
-- id: '1553912216011'
-  alias: Outside Lights (AWAY)
+- alias: Outside Lights (AWAY)
   trigger:
-  - entity_id: device_tracker.alexs_phone_owntracks
-    from: home
     platform: state
+    entity_id: device_tracker.alexs_phone_owntracks
+    from: home
     to: not_home
   condition:
-  - condition: state
+    condition: state
     entity_id: sun.sun
     state: below_horizon
   action:
-  - alias: ''
-    data:
-      entity_id: group.outside_lights
+    entity_id: group.outside_lights
     service: switch.turn_on
-- id: '1553924030288'
-  alias: Outside Lights (HOME)
+- alias: Outside Lights (HOME)
   trigger:
-  - entity_id: device_tracker.alexs_phone_owntracks
-    from: not_home
     platform: state
+    entity_id: device_tracker.alexs_phone_owntracks
+    from: not_home
     to: home
   condition:
-  - condition: state
+    condition: state
     entity_id: sun.sun
     state: below_horizon
   action:
-  - data:
+  - service: switch.turn_off
+    data:
       entity_id: group.outside_lights
-    service: switch.turn_off
-  - data:
+  - service: light.turn_on
+    data:
       entity_id: group.kitchen_lights
-    service: light.turn_on
-  - data:
+  - service: light.turn_on
+    data:
       entity_id: group.living_room_lights
-    service: light.turn_on
-- id: '1553926941290'
-  alias: Outside Lights (SUNSET)
+- alias: Outside Lights (SUNSET)
   trigger:
-  - event: sunset
     platform: sun
+    event: sunset
   condition:
-  - condition: state
+    condition: state
     entity_id: device_tracker.alexs_phone_owntracks
     state: not_home
   action:
-  - data:
-      entity_id: group.outside_lights
+    entity_id: group.outside_lights
     service: switch.turn_on
-- id: '1553927002363'
-  alias: All Lights (SUNRISE)
+- alias: All Lights (SUNRISE)
   trigger:
   - event: sunrise
     platform: sun
-  condition: []
   action:
-  - data: {}
-    service: switch.turn_off
-  - data: {}
-    service: light.turn_off
-- id: '1555984346145'
-  alias: Inside Lights (SUNSET)
+  - service: switch.turn_off
+    entity_id: all
+  - service: light.turn_off
+    entity_id: all
+  mode: single
+- alias: Inside Lights (SUNSET)
   trigger:
-  - event: sunset
     platform: sun
+    event: sunset
   condition:
-  - condition: state
+    condition: state
     entity_id: device_tracker.alexs_phone_owntracks
     state: home
   action:
-  - data:
+  - service: light.turn_on
+    data:
       entity_id: group.kitchen_lights
-    service: light.turn_on
-  - data:
+  - service: light.turn_on
+    data:
       entity_id: group.living_room_lights
-    service: light.turn_on
