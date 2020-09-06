@@ -1,18 +1,15 @@
 outside_lights:
     name: Outside Lights
-    view: false
     entities:
       - switch.ge_14291_in_wall_smart_switch_switch
       - switch.ge_14291_in_wall_smart_switch_switch_2
 living_room_lights:
     name: Living Room Lights
-    view: false
     entities:
       - light.ge_28167_zw3104_plug_in_smart_dimmer_single_plug_level
       - light.ge_28167_zw3104_plug_in_smart_dimmer_single_plug_level_3
 kitchen_lights:
     name: Kitchen Lights
-    view: false
     entities:
       - light.jasco_products_14294_in_wall_smart_dimmer_level
       - light.jasco_products_14294_in_wall_smart_dimmer_level_2
