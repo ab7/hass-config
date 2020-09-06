@@ -1,86 +1,22 @@
-homeassistant:
-  # Name of the location where Home Assistant is running
-  name: Home
-  # Location required to calculate the time the sun rises and sets
-  latitude: !secret lat
-  longitude: !secret long
-  # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 0
-  # metric for Metric, imperial for Imperial
-  unit_system: imperial
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: America/Denver
-  # Customization file
-  customize: !include customize.yaml
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-zone:
-  # This will override the default home zone
-  - name: Home
-    latitude: !secret lat
-    longitude: !secret long
-    radius: 100
-    icon: mdi:account-multiple
-
-intent_script: !include intent_script.yaml
-
-# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-http:
-  base_url: !secret http_base_url
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
-
-# Discover some devices automatically
-discovery:
+# Text to speech
+tts:
+  - platform: google_translate
 
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+scene: !include scenes.yaml
 
-device_tracker:
-  - platform: nmap_tracker
-    hosts: 192.168.1.0/24
-    consider_home: 600
-    new_device_defaults:
-      track_new_devices: false
-
-map:
-
-zwave:
-    usb_path: /dev/ttyACM0
-
-alexa:
-
-zeroconf:
-
-notify:
-
-ios:
-
-mobile_app:
-
-ssdp:
-
-owntracks:
+http:
+  base_url: !secret http_base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  ip_ban_enabled: true
+  login_attempts_threshold: 3
 
 emulated_hue:
-  host_ip: !secret hue_ip
-  listen_port: !secret hue_port
-  expose_by_default: false
-  exposed_domains:
-    - light
-  entities:
-    light.ge_28167_zw3104_plug_in_smart_dimmer_single_plug_level:
-      name: "Living Room Dimmer 1"
-      hidden: false
-    light.ge_28167_zw3104_plug_in_smart_dimmer_single_plug_level_3:
-      name: "Living Room Dimmer 2"
-      hidden: false
-    light.jasco_products_14294_in_wall_smart_dimmer_level:
-      name: "Kitchen Light 1"
-      hidden: false
-    light.jasco_products_14294_in_wall_smart_dimmer_level_2:
-      name: "Kitchen Light 2"
-      hidden: false
+  listen_port: 80
